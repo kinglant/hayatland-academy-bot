@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Hayat Land Academy</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #1a33b8;
+    --blue-d: #0f1f7a;
+    --blue-l: #e9edff;
+    --red: #e3262f;
+    --bg: #f3f5fb;
+    --card: #ffffff;
+    --line: #dde3f3;
+    --text: #0d1440;
+    --muted: #66708f;
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { margin: 0; background: var(--bg); color: var(--text); font-family: "Montserrat", system-ui, sans-serif; }
+  body { padding-bottom: 100px; overflow-x: hidden; }
+  button { font-family: inherit; }
+
+  header { position: relative; overflow: hidden; color: #fff; padding: 22px 16px 26px;
+    background: radial-gradient(110% 80% at 100% 0%, #3a56f0 0%, transparent 60%), linear-gradient(160deg, var(--blue), var(--blue-d)); }
+  header::before, header::after { content: ""; position: absolute; border-radius: 50%; background: rgba(255,255,255,.07); }
+  header::before { width: 220px; height: 220px; right: -70px; top: -60px; }
+  header::after { width: 140px; height: 140px; right: 40px; bottom: -80px; }
+  .brand { display: flex; align-items: center; gap: 12px; position: relative; z-index: 1; }
+  .logo { width: 48px; height: 48px; flex: none; }
+  .brand b { display: block; font-size: 15px; font-weight: 800; letter-spacing: 1.2px; }
+  .brand small { font-size: 10.5px; letter-spacing: 1.8px; opacity: .8; font-weight: 600; }
+  .ribbon { display: inline-block; margin-top: 22px; padding: 5px 10px; border-radius: 8px; background: var(--red);
+    font-size: 11px; font-weight: 800; letter-spacing: 1px; position: relative; z-index: 1; }
+  h1 { margin: 10px 0 4px; font-size: 15px; font-weight: 500; position: relative; z-index: 1; }
+  h1 strong { display: block; font-size: 38px; line-height: .95; font-weight: 900; letter-spacing: -.5px; margin-top: 4px; }
+  .stats { display: flex; gap: 10px; margin-top: 18px; position: relative; z-index: 1; }
+  .stats div { flex: 1; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.18); border-radius: 14px;
+    padding: 10px; font-size: 10.5px; line-height: 1.3; }
+  .stats b { display: block; font-size: 17px; font-weight: 800; }
+
+  .label { padding: 20px 16px 10px; font-size: 11.5px; letter-spacing: 1.8px; color: var(--muted); font-weight: 700; }
+  .tabs { display: flex; gap: 8px; padding: 0 16px; }
+  .tab { flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; border-radius: 14px;
+    border: 1.5px solid var(--line); background: var(--card); color: var(--text); font-weight: 700; font-size: 14px; cursor: pointer; }
+  .tab .f { font-size: 20px; }
+  .tab.active { background: var(--blue); border-color: var(--blue); color: #fff; box-shadow: 0 6px 16px rgba(26,51,184,.25); }
+  .exam { padding: 10px 16px 0; color: var(--muted); font-size: 12.5px; }
+  .exam b { color: var(--blue); }
+
+  .courses { padding: 0 16px; display: grid; gap: 10px; }
+  .course { position: relative; text-align: left; width: 100%; border: 1.5px solid var(--line); background: var(--card);
+    color: var(--text); border-radius: 18px; padding: 16px; cursor: pointer; transition: border-color .15s, transform .15s, box-shadow .15s; }
+  .course:active { transform: scale(.99); }
+  .course.active { border-color: var(--blue); box-shadow: 0 8px 22px rgba(26,51,184,.14); }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .course h3 { margin: 0; font-size: 17px; font-weight: 800; }
+  .badge { font-size: 10px; font-weight: 800; letter-spacing: .6px; padding: 4px 8px; border-radius: 8px; background: var(--red); color: #fff; }
+  .course p { margin: 6px 0 8px; font-size: 13px; color: #2b3463; }
+  .meta { display: flex; flex-wrap: wrap; gap: 6px; }
+  .meta span { font-size: 11.5px; font-weight: 600; color: var(--blue); background: var(--blue-l); padding: 4px 8px; border-radius: 8px; }
+  .price { margin-top: 12px; display: flex; align-items: baseline; gap: 6px; }
+  .price b { font-size: 21px; font-weight: 800; color: var(--blue); }
+  .price span { color: var(--muted); font-size: 12px; }
+  .radio { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--line); flex: none; display: grid; place-items: center; }
+  .course.active .radio, .time.active .radio { border-color: var(--blue); }
+  .course.active .radio::after, .time.active .radio::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--blue); }
+
+  .times { display: grid; gap: 8px; padding: 0 16px; }
+  .time { display: flex; justify-content: space-between; align-items: center; padding: 13px 14px; border-radius: 14px;
+    border: 1.5px solid var(--line); background: var(--card); color: var(--text); font-weight: 600; font-size: 13.5px; cursor: pointer; }
+  .time.active { border-color: var(--blue); background: var(--blue-l); color: var(--blue); }
+
+  .info { margin: 0 16px; padding: 4px 16px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); }
+  .info a, .info div { display: flex; gap: 12px; align-items: center; padding: 12px 0; font-size: 13.5px; color: var(--text);
+    text-decoration: none; border-bottom: 1px solid var(--line); }
+  .info > :last-child { border-bottom: none; }
+  .info i { flex: none; width: 36px; height: 36px; border-radius: 12px; background: var(--blue-l); display: grid; place-items: center;
+    font-style: normal; font-size: 16px; }
+  .info small { display: block; color: var(--muted); font-size: 11.5px; }
+  .info .go { margin-left: auto; color: var(--blue); font-weight: 800; }
+
+  .note { text-align: center; color: #9aa2bd; font-size: 11px; padding: 18px 16px 0; }
+
+  .fallback-bar { position: fixed; left: 0; right: 0; bottom: 0; padding: 14px 16px 18px;
+    background: linear-gradient(rgba(243,245,251,0), var(--bg) 35%); }
+  .fallback-bar button { width: 100%; border: none; border-radius: 16px; padding: 16px; background: var(--blue);
+    color: #fff; font-weight: 800; font-size: 15px; box-shadow: 0 8px 20px rgba(26,51,184,.3); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">
+    <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+      <circle cx="24" cy="24" r="23" fill="#fff"/>
+      <path d="M24 9 39 24 24 39 9 24Z" fill="none" stroke="#1a33b8" stroke-width="3.2" stroke-linejoin="round"/>
+      <text x="24" y="28.5" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="11.5" font-weight="900" fill="#1a33b8">HL</text>
+    </svg>
+    <div><b>HAYAT LAND</b><small>ACADEMY</small></div>
+  </div>
+  <span class="ribbon">YANGI O'QUV YILI</span>
+  <h1>uchun <strong>QABUL<br>OCHIQ!</strong></h1>
+  <div class="stats">
+    <div><b>🇬🇧 🇷🇺</b>Ingliz va rus tili</div>
+    <div><b>IELTS</b>tayyorlov</div>
+    <div><b>1-dars</b>bepul</div>
+  </div>
+</header>
+
+<div class="label">FANNI TANLANG</div>
+<nav class="tabs" id="tabs"></nav>
+<div class="exam" id="exam"></div>
+
+<div class="label">KURS</div>
+<div class="courses" id="courses"></div>
+
+<div class="label">QULAY VAQT</div>
+<div class="times" id="times"></div>
+
+<div class="label">MARKAZ</div>
+<div class="info">
+  <a href="https://yandex.uz/maps/?text=Troitskiy%20Havas" target="_blank" data-ext><i>📍</i><span>Troitskiy, Havas binosi<small>2-qavat</small></span><span class="go">›</span></a>
+  <div><i>🕗</i><span>Har kuni<small>08:00 – 20:00</small></span></div>
+  <a href="tel:+998991678899"><i>📞</i><span>+998 99 167 88 99<small>Qo'ng'iroq qilish</small></span><span class="go">›</span></a>
+  <a href="tel:+998991378899"><i>📞</i><span>+998 99 137 88 99<small>Qo'ng'iroq qilish</small></span><span class="go">›</span></a>
+  <a href="https://t.me/hayatland_academy" data-tg><i>✈️</i><span>@hayatland_academy<small>Telegram kanal</small></span><span class="go">›</span></a>
+</div>
+
+<p class="note">Narxlar taxminiy · aniq narxni administrator aytadi</p>
+
+<div class="fallback-bar" id="fallbackBar"><button id="fallbackBtn">Bepul sinov darsiga yozilish</button></div>
+
+<script>
+const BOT = "hayat_land_academy_bot";
+const tg = window.Telegram && window.Telegram.WebApp;
+const inTelegram = !!(tg && tg.initData);
+let data = { subjects: [], courses: [], times: [] };
+let subject = null, course = null, time = null;
+
+const fmt = n => n.toLocaleString("ru-RU").replace(/\s|,/g, " ") + " so'm";
+
+function render() {
+  document.getElementById("tabs").innerHTML = data.subjects.map(s => `
+    <button class="tab${s.id === subject ? " active" : ""}" data-subject="${s.id}"><span class="f">${s.flag}</span>${s.name}</button>`).join("");
+  const S = data.subjects.find(s => s.id === subject);
+  document.getElementById("exam").innerHTML = `Yo'nalish: <b>${S.exam}</b>`;
+  document.getElementById("courses").innerHTML = data.courses.filter(c => c.subject === subject).map(c => `
+    <button class="course${c.id === course ? " active" : ""}" data-course="${c.id}">
+      <div class="row"><h3>${c.name}</h3>${c.tag ? `<span class="badge">${c.tag}</span>` : ""}</div>
+      <p>${c.desc}</p>
+      <div class="meta"><span>🗓 ${c.lessons}</span><span>⏳ ${c.duration}</span></div>
+      <div class="row"><div class="price"><b>${fmt(c.price)}</b><span>/ oy</span></div><span class="radio"></span></div>
+    </button>`).join("");
+  document.getElementById("times").innerHTML = data.times.map((t, i) => `
+    <button class="time${i === time ? " active" : ""}" data-time="${i}">${t}<span class="radio"></span></button>`).join("");
+  updateButton();
+}
+
+function updateButton() {
+  const C = data.courses.find(c => c.id === course);
+  const text = C ? `${C.name} — bepul sinov darsi` : "Kursni tanlang";
+  if (inTelegram) {
+    tg.MainButton.setText(text);
+    C ? tg.MainButton.show() : tg.MainButton.hide();
+  } else document.getElementById("fallbackBtn").textContent = text;
+}
+
+function submit() {
+  if (!course) return;
+  // Klaviatura tugmasidan ochilganda — sendData; menyu tugmasidan ochilganda sendData ishlamaydi, deep-link ishlatiladi
+  if (inTelegram && !tg.initDataUnsafe.query_id) {
+    tg.sendData(JSON.stringify({ course, time }));
+  } else if (inTelegram) {
+    tg.openTelegramLink(`https://t.me/${BOT}?start=c_${course}${time !== null ? "_" + time : ""}`);
+    tg.close();
+  } else {
+    location.href = `https://t.me/${BOT}?start=c_${course}${time !== null ? "_" + time : ""}`;
+  }
+}
+
+document.addEventListener("click", e => {
+  const s = e.target.closest("[data-subject]");
+  const c = e.target.closest("[data-course]");
+  const t = e.target.closest("[data-time]");
+  const tgLink = e.target.closest("[data-tg]");
+  const ext = e.target.closest("[data-ext]");
+  if (inTelegram && tgLink) { e.preventDefault(); tg.openTelegramLink(tgLink.href); return; }
+  if (inTelegram && ext) { e.preventDefault(); tg.openLink(ext.href); return; }
+  if (s) {
+    subject = s.dataset.subject;
+    const first = data.courses.find(x => x.subject === subject && x.tag) || data.courses.find(x => x.subject === subject);
+    course = first.id;
+  }
+  else if (c) course = c.dataset.course;
+  else if (t) time = +t.dataset.time;
+  else return;
+  render();
+  if (inTelegram) tg.HapticFeedback.selectionChanged();
+});
+document.getElementById("fallbackBtn").addEventListener("click", submit);
+
+if (inTelegram) {
+  document.getElementById("fallbackBar").style.display = "none";
+  tg.ready();
+  tg.expand();
+  tg.setHeaderColor("#1a33b8");
+  tg.setBackgroundColor("#f3f5fb");
+  tg.MainButton.color = "#1a33b8";
+  tg.MainButton.textColor = "#ffffff";
+  tg.MainButton.onClick(submit);
+}
+
+fetch("courses.json")
+  .then(r => r.json())
+  .then(d => {
+    data = d; subject = d.subjects[0].id;
+    course = (d.courses.find(c => c.subject === subject && c.tag) || d.courses[0]).id;
+    render();
+  })
+  .catch(() => { document.getElementById("courses").innerHTML = '<p class="note">Ma\'lumotlarni yuklab bo\'lmadi.</p>'; });
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "subjects": [
+    {"id": "en", "flag": "🇬🇧", "name": "Ingliz tili", "exam": "IELTS / CEFR"},
+    {"id": "ru", "flag": "🇷🇺", "name": "Rus tili", "exam": "Grammatika / so'zlashuv"}
+  ],
+  "courses": [
+    {"id": "ielts", "subject": "en", "name": "IELTS", "desc": "Maqsad — 6.5+ ball. Har hafta mock test", "lessons": "Haftada 3 kun · 2 soat", "duration": "3 oy", "price": 650000, "tag": "TOP"},
+    {"id": "general", "subject": "en", "name": "General English", "desc": "Beginner → Upper-Intermediate", "lessons": "Haftada 3 kun · 1.5 soat", "duration": "har daraja 2.5 oy", "price": 450000, "tag": ""},
+    {"id": "kids", "subject": "en", "name": "Kids English", "desc": "7–12 yosh bolalar uchun, o'yin orqali", "lessons": "Haftada 3 kun · 1 soat", "duration": "doimiy", "price": 400000, "tag": ""},
+    {"id": "rugram", "subject": "ru", "name": "Rus tili grammatikasi", "desc": "Noldan boshlab: kelishiklar, fe'llar, yozish", "lessons": "Haftada 3 kun · 1.5 soat", "duration": "4 oy", "price": 400000, "tag": "TOP"},
+    {"id": "rusp", "subject": "ru", "name": "Rus tili — so'zlashuv", "desc": "Erkin gapirish, talaffuz, lug'at boyligi", "lessons": "Haftada 3 kun · 1.5 soat", "duration": "3 oy", "price": 400000, "tag": ""}
+  ],
+  "times": ["Ertalab · 08:00–11:00", "Kunduzi · 14:00–17:00", "Kechqurun · 17:00–20:00"]
+}
